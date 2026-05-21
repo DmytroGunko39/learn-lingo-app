@@ -1,14 +1,15 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import TeachersPage from "./pages/TeachersPage";
+import FavoritesPage from "./pages/FavoritesPage";
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to React</h1>
-      <p>
-        This is JSX — it looks like HTML, but it's not quite the same. It has
-        its own rules!
-      </p>
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/teachers" element={<TeachersPage />} />
+      <Route path="/favorites" element={<FavoritesPage />} />
+    </Routes>
   );
 }
 
