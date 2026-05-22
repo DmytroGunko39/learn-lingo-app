@@ -1,14 +1,21 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { type ReactNode } from "react";
+import { Navigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
 
-const PrivateRoute = () => {
+type PrivateRouteProps = {
+  children: ReactNode;
+};
+
+const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const { user } = useAuth();
 
   if (!user) {
+    toast.error("Please log in to access this page");
     return <Navigate to="/" replace />;
   }
 
-  return <Outlet />;
+  return <>{children}</>;
 };
 
 export default PrivateRoute;

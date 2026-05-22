@@ -9,9 +9,14 @@ const AppRouter = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/teachers" element={<TeachersPage />} />
-      <Route element={<PrivateRoute />}>
-        <Route path="/favorites" element={<FavoritesPage />} />
-      </Route>
+      <Route
+        path="/favorites"
+        element={
+          <PrivateRoute>
+            <FavoritesPage />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 };
