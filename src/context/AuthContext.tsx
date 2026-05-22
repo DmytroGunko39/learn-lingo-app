@@ -1,17 +1,29 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import { onAuthStateChanged, type User } from "firebase/auth";
+import { auth } from "../firebase/auth";
 
 type AuthContextType = {
-  user: null | { uid: string; email: string };
-  setUser: (user: null | { uid: string; email: string }) => void;
+  currentUser: User | null;
+  isLoading: boolean;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<AuthContextType["user"]>(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setCurrentUser(firebaseUser);
+      setIsLoading(false);
+    });
+
+    return unsubscribe;
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ currentUser, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

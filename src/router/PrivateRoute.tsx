@@ -8,9 +8,9 @@ type PrivateRouteProps = {
 };
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
 
-  if (!user) {
+  if (!currentUser) {
     toast.error("Please log in to access this page");
     return <Navigate to="/" replace />;
   }
