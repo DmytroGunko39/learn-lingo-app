@@ -9,11 +9,13 @@
 **App:** A platform for a company offering online language tutoring services.
 
 ### 3 Pages:
+
 - **Home** — company advantages + CTA button → redirects to Teachers page
 - **Teachers** — list of teachers with filters (language, student level, price/hour)
-- **Favorites** *(private)* — teachers added to favorites by the logged-in user
+- **Favorites** _(private)_ — teachers added to favorites by the logged-in user
 
 ### Requirements:
+
 1. Firebase Authentication (register, login, get current user, logout)
 2. Auth forms built with react-hook-form & Yup. Modal closes on ✕ button, backdrop click, or Esc key
 3. Firebase Realtime Database — teachers collection with fields: `name`, `surname`, `languages`, `levels`, `rating`, `reviews`, `price_per_hour`, `lessons_done`, `avatar_url`, `lesson_info`, `conditions`, `experience`
@@ -30,12 +32,13 @@
 12. Favorites page (private route) — same styling as Teachers page
 
 ### Bonus:
+
 - React Router routing
 - Filters: by language, student level, price per hour
 
 ---
 
-## PROJECT STRUCTURE (to set up at the start)
+## PROJECT STRUCTURE (to set up at the start)✅
 
 ```
 src/
@@ -70,7 +73,7 @@ src/
 
 ---
 
-### PHASE 1 — Project Setup
+### PHASE 1 — Project Setup✅
 
 - [ ] **1.1** Run `npm create vite@latest learnlingo -- --template react` to create the project
 - [ ] **1.2** Run `cd learnlingo && npm install`
@@ -94,7 +97,7 @@ src/
 
 ---
 
-### PHASE 2 — Firebase Setup
+### PHASE 2 — Firebase Setup✅
 
 - [ ] **2.1** Go to [firebase.google.com](https://firebase.google.com) → create a new project called `learnlingo`
 - [ ] **2.2** In Firebase console → go to **Authentication** → Enable **Email/Password** provider
@@ -107,7 +110,7 @@ src/
 
 ---
 
-### PHASE 3 — Routing Setup
+### PHASE 3 — Routing Setup✅
 
 - [ ] **3.1** Wrap the app in `<BrowserRouter>` inside `main.jsx`
 - [ ] **3.2** Create `App.jsx` with `<Routes>`:
@@ -121,7 +124,7 @@ src/
 
 ---
 
-### PHASE 4 — Auth Context
+### PHASE 4 — Auth Context✅
 
 - [ ] **4.1** Create `src/context/AuthContext.jsx`
 - [ ] **4.2** Create `AuthProvider` component that holds: `currentUser`, `isLoading` state
@@ -132,7 +135,7 @@ src/
 
 ---
 
-### PHASE 5 — Header Component
+### PHASE 5 — Header Component✅
 
 - [ ] **5.1** Create `src/components/Header/Header.jsx` and `Header.module.css`
 - [ ] **5.2** Add logo (text or SVG) on the left
@@ -344,13 +347,13 @@ src/
 
 ## QUICK REFERENCE — Key npm packages
 
-| Package | Purpose |
-|---|---|
-| `react-router-dom` | Routing (pages, private routes) |
-| `firebase` | Auth + Realtime Database |
-| `react-hook-form` | Form state management |
-| `yup` | Form validation schemas |
-| `@hookform/resolvers` | Connect Yup to react-hook-form |
+| Package               | Purpose                         |
+| --------------------- | ------------------------------- |
+| `react-router-dom`    | Routing (pages, private routes) |
+| `firebase`            | Auth + Realtime Database        |
+| `react-hook-form`     | Form state management           |
+| `yup`                 | Form validation schemas         |
+| `@hookform/resolvers` | Connect Yup to react-hook-form  |
 
 ---
 
