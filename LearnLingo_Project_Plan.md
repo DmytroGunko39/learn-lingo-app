@@ -161,7 +161,7 @@ src/
 
 ---
 
-### PHASE 7 — Auth Forms (Register & Login)
+### PHASE 7 — Auth Forms (Register & Login)✅
 
 - [ ] **7.1** Create `src/components/AuthForm/RegisterForm.jsx` and `RegisterForm.module.css`
 - [ ] **7.2** Register form fields: `name`, `email`, `password`

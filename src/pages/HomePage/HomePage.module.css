@@ -1,0 +1,165 @@
+/* 8.5 — CSS Modules for HomePage */
+
+.page {
+  min-height: calc(100vh - 48px);
+  background-color: #ffffff;
+  /* padding: 20px 0 80px; */
+}
+
+.container {
+  padding: 0 64px;
+}
+
+/* 8.2 — Hero section */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.heroContent {
+  width: 720px;
+  height: 530px;
+  background: #f8f8f8;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  padding: 64px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.16667;
+  letter-spacing: -0.02em;
+  color: #121417;
+}
+
+/* "language" word — italic with yellow highlight background */
+.highlight {
+  font-style: italic;
+  background-color: #f4c550;
+  border-radius: 8px;
+  padding: 0 8px;
+}
+
+.description {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  margin-bottom: 34px;
+  line-height: 1.375;
+  letter-spacing: -0.02em;
+  color: #121417;
+  opacity: 0.7;
+  max-width: 471px;
+}
+
+/* 8.3 — Get started button */
+.getStartedBtn {
+  width: 267px;
+  height: 60px;
+  background-color: #f4c550;
+  color: #121417;
+  border: none;
+  border-radius: 12px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.getStartedBtn:hover {
+  background-color: #f0b429;
+}
+
+/* Decorative image */
+.heroImageWrapper {
+  flex: 1;
+  height: 530px;
+  background-color: #f4c550;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* 8.4 — Statistics section */
+.stats {
+  display: flex;
+  align-items: center;
+  border: 2px dashed rgba(244, 197, 80, 0.6);
+  border-radius: 30px;
+  padding: 40px 80px;
+  gap: 0;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  padding: 0 40px;
+}
+
+/* vertical divider between stats */
+.statItem:not(:last-child) {
+  border-right: 1px solid rgba(18, 20, 23, 0.2);
+}
+
+.statItem:first-child {
+  padding-left: 0;
+}
+
+.statValue {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #121417;
+  white-space: nowrap;
+}
+
+.statLabel {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #121417;
+  opacity: 0.5;
+  max-width: 80px;
+}
+
+/* 8.6 — Desktop responsive */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .heroImageWrapper {
+    width: 100%;
+    height: 400px;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    padding: 32px;
+    gap: 24px;
+  }
+
+  .statItem {
+    flex: 1 1 40%;
+    border-right: none !important;
+  }
+}
