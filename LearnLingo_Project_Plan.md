@@ -148,7 +148,7 @@ src/
 
 ---
 
-### PHASE 6 — Modal Component (reusable)
+### PHASE 6 — Modal Component (reusable)✅
 
 - [ ] **6.1** Create `src/components/Modal/Modal.jsx` and `Modal.module.css`
 - [ ] **6.2** The modal receives `onClose` and `children` as props
