@@ -185,7 +185,7 @@ src/
 
 ---
 
-### PHASE 8 — Home Page
+### PHASE 8 — Home Page✅
 
 - [ ] **8.1** Create `src/pages/HomePage/HomePage.jsx` and `HomePage.module.css`
 - [ ] **8.2** Build Hero section: headline text, description, decorative image (from Figma)
