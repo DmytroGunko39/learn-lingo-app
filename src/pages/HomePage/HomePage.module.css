@@ -42,10 +42,20 @@
 
 /* "language" word — italic with yellow highlight background */
 .highlight {
+  font-weight: 400;
   font-style: italic;
-  background-color: #f4c550;
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.highlight::before {
+  content: "";
+  position: absolute;
+  inset: 10px -8px 5px -3px;
+  background-color: #fbe9ba;
   border-radius: 8px;
-  padding: 0 8px;
+  z-index: -1;
 }
 
 .description {
