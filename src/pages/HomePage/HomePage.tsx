@@ -17,7 +17,6 @@ const HomePage = () => {
   return (
     <main className={styles.page}>
       <div className={styles.container}>
-
         {/* 8.2 — Hero section */}
         <section className={styles.hero}>
           <div className={styles.heroContent}>
@@ -52,8 +51,22 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* 8.4 — Statistics section */}
+        {/* 8.4 — Statistics section — SVG rect used for custom dash length/gap control */}
         <section className={styles.stats}>
+          <svg className={styles.statsBorder} aria-hidden="true">
+            <rect
+              x="1"
+              y="1"
+              width="calc(100% - 2px)"
+              height="calc(100% - 2px)"
+              rx="29"
+              ry="29"
+              fill="none"
+              stroke="#F4C550"
+              strokeWidth="1.5"
+              strokeDasharray="15 18"
+            />
+          </svg>
           {stats.map(({ value, label }) => (
             <div key={label} className={styles.statItem}>
               <span className={styles.statValue}>{value}</span>
@@ -61,7 +74,6 @@ const HomePage = () => {
             </div>
           ))}
         </section>
-
       </div>
     </main>
   );
