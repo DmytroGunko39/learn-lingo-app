@@ -1,75 +1,139 @@
-# React + TypeScript + Vite
+# LearnLingo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A platform for discovering and booking online language tutoring services. Browse teachers, filter by language, level, or price, save favorites, and book a trial lesson — all in one place.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+_Coming soon_
 
-## React Compiler
+## Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Browse language teachers with pagination (4 per page, load more)
+- Filter teachers by language, student level, and price per hour
+- Expand a teacher card to read full bio, conditions, and student reviews
+- Book a trial lesson via a modal form
+- Register and log in with email and password
+- Save favorite teachers (persisted in Firebase per user)
+- Favorites page (private route — accessible only when logged in)
+- Toast notifications for auth events and access errors
+- Responsive layout for all desktop screen sizes
 
-Note: This will impact Vite dev & build performances.
+## Tech Stack
 
-## Expanding the ESLint configuration
+| Layer | Technology |
+|---|---|
+| UI | React 19, TypeScript |
+| Styling | CSS Modules |
+| Routing | React Router v7 |
+| Forms | React Hook Form + Yup |
+| Backend | Firebase Authentication + Realtime Database |
+| Build | Vite 8, React Compiler |
+| Notifications | react-hot-toast |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Structure
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/
+│   ├── AuthForm/        # LoginForm and RegisterForm (react-hook-form + Yup)
+│   ├── BookingForm/     # Trial lesson booking form
+│   ├── Filters/         # Language / level / price dropdowns
+│   ├── Header/          # Navigation + auth buttons
+│   ├── Logo/            # Brand logo component
+│   ├── Modal/           # Reusable portal modal (Esc / backdrop close)
+│   └── TeacherCard/     # Teacher card with expand / favorite / book actions
+├── context/
+│   ├── AuthContext.tsx  # Firebase auth state (currentUser, isLoading)
+│   └── FavoritesContext.tsx
+├── firebase/
+│   ├── firebaseConfig.ts
+│   ├── auth.ts          # registerUser, loginUser, logoutUser
+│   └── database.ts      # getTeachers (paginated), getUserFavorites, addFavorite, removeFavorite
+├── hooks/
+│   └── useModal.ts
+├── pages/
+│   ├── HomePage/        # Hero section + statistics
+│   ├── TeachersPage/    # Teacher listing with filters and pagination
+│   └── FavoritesPage/   # Saved teachers (private route)
+└── router/
+    ├── AppRouter.tsx
+    └── PrivateRoute.tsx  # Redirects unauthenticated users to /
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js 18 or later
+- A Firebase project with **Authentication** (Email/Password) and **Realtime Database** enabled
+
+### Installation
+
+```bash
+git clone https://github.com/your-username/learn-lingo-app.git
+cd learn-lingo-app
+npm install
 ```
+
+### Environment Variables
+
+Copy the example file and fill in your Firebase credentials:
+
+```bash
+cp .env.example .env
+```
+
+`.env.example`:
+
+```
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_DATABASE_URL=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+All values are found in **Firebase Console → Project Settings → Web App**.
+
+### Firebase Database
+
+Upload `teachers.json` to the Realtime Database under the `/teachers` node:
+
+1. Firebase Console → Realtime Database → ⋮ menu → **Import JSON**
+2. Select `teachers.json` from the project root
+
+Set the database rules to allow public reads:
+
+```json
+{
+  "rules": {
+    ".read": true,
+    ".write": "auth != null"
+  }
+}
+```
+
+### Run Locally
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173).
+
+### Build for Production
+
+```bash
+npm run build
+npm run preview
+```
+
+## Deployment (Netlify)
+
+1. Push the repository to GitHub
+2. Netlify → **Add new site** → **Import from Git**
+3. Build command: `npm run build` — Publish directory: `dist`
+4. Add all `VITE_FIREBASE_*` variables in **Site settings → Environment variables**
+5. Deploy

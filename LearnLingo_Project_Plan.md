@@ -196,7 +196,7 @@ src/
 
 ---
 
-### PHASE 9 — Fetch Teachers from Firebase
+### PHASE 9 — Fetch Teachers from Firebase✅
 
 - [ ] **9.1** In `src/firebase/database.js` write `getTeachers(lastKey, limit)` function
   - Uses Firebase `query`, `orderByKey`, `startAfter`, `limitToFirst` for pagination
