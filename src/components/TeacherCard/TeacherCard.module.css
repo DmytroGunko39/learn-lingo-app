@@ -1,0 +1,266 @@
+.card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  gap: 48px;
+}
+
+/* Avatar */
+.avatarWrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 100px;
+  border: 3px solid #fbe9ba;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 100px;
+  object-fit: cover;
+}
+
+.onlineDot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  bottom: auto;
+  right: 21px;
+  top: 14px;
+  left: auto;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.languagesLabel {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(18, 20, 23, 0.5);
+  flex-shrink: 0;
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #121417;
+  white-space: nowrap;
+}
+
+.divider {
+  width: 1px;
+  height: 16px;
+  background-color: rgba(18, 20, 23, 0.2);
+  flex-shrink: 0;
+}
+
+.price {
+  color: #38cd3e;
+  font-weight: 700;
+}
+
+.heartBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin-left: 28px;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.heartBtn:hover {
+  opacity: 0.7;
+}
+
+/* Name */
+.name {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+  color: #121417;
+  margin-bottom: 16px;
+}
+
+/* Info rows */
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.infoRow {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #121417;
+}
+
+.infoLabel {
+  color: rgba(18, 20, 23, 0.5);
+}
+
+.speaksList {
+  text-decoration: underline;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Read more */
+.readMoreBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #121417;
+  text-decoration: underline;
+  padding: 0;
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* Expanded — experience */
+.experience {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.625;
+  color: #121417;
+  margin-bottom: 32px;
+}
+
+/* Expanded — reviews */
+.reviews {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reviewerAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.reviewerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reviewerName {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #121417;
+}
+
+.reviewerRating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #121417;
+}
+
+.reviewComment {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.625;
+  color: #121417;
+}
+
+/* Expanded — book button */
+.bookBtn {
+  display: block;
+  width: 232px;
+  height: 60px;
+  background: #f4c550;
+  color: #121417;
+  border: none;
+  border-radius: 12px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 32px;
+  transition: background-color 0.2s;
+}
+
+.bookBtn:hover {
+  background-color: #f0b429;
+}
+
+/* Level tags */
+.levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.levelTag {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #121417;
+  border: 1.5px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+  padding: 8px 16px;
+  white-space: nowrap;
+}
+
+.levelActive {
+  background-color: #f4c550;
+  border-color: #f4c550;
+}

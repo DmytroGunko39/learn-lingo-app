@@ -205,7 +205,7 @@ src/
 
 ---
 
-### PHASE 10 — Teacher Card Component
+### PHASE 10 — Teacher Card Component✅
 
 - [ ] **10.1** Create `src/components/TeacherCard/TeacherCard.jsx` and `TeacherCard.module.css`
 - [ ] **10.2** Build the collapsed card view (default state) with:

@@ -20,7 +20,12 @@ export type Teacher = {
   languages: string[];
   levels: string[];
   rating: number;
-  reviews: { reviewer_name: string; reviewer_rating: number; comment: string }[];
+  reviews: {
+    reviewer_name: string;
+    reviewer_rating: number;
+    comment: string;
+    reviewer_avatar?: string;
+  }[];
   price_per_hour: number;
   lessons_done: number;
   avatar_url: string;
