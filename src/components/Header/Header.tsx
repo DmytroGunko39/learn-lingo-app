@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useAuth } from "../../context/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 import { logoutUser } from "../../firebase/auth";
 import Logo from "../Logo/Logo";
 import Modal from "../Modal/Modal";
