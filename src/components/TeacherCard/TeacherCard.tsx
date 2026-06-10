@@ -1,65 +1,14 @@
 import { useState } from "react";
 import { type Teacher } from "../../firebase/database";
+import BookIcon from "../../assets/icons/BookIcon";
+import StarIcon from "../../assets/icons/StarIcon";
+import HeartIcon from "../../assets/icons/HeartIcon";
+import OnlineDotIcon from "../../assets/icons/OnlineDotIcon";
 import styles from "./TeacherCard.module.css";
 
 type Props = {
   teacher: Teacher;
 };
-
-const BookIcon = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-  </svg>
-);
-
-const StarIcon = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="#FFC531"
-    stroke="#FFC531"
-    strokeWidth="1"
-    strokeLinejoin="round"
-  >
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-  </svg>
-);
-
-const HeartIcon = () => (
-  <svg
-    width="26"
-    height="26"
-    viewBox="0 0 26 26"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M13 22.4375C13 22.4375 2.4375 16.25 2.4375 9.1875C2.4375 5.51 5.27 2.4375 8.71875 2.4375C10.5729 2.4375 12.2396 3.26042 13.4115 4.5625L13 4.97396L12.5885 4.5625C11.7604 3.26042 10.0938 2.4375 8.71875 2.4375"
-      stroke="#121417"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M13 22.4375C13 22.4375 23.5625 16.25 23.5625 9.1875C23.5625 5.51 20.73 2.4375 17.2813 2.4375C15.4271 2.4375 13.7604 3.26042 12.5885 4.5625L13 4.97396L13.4115 4.5625C14.2396 3.26042 15.9063 2.4375 17.2813 2.4375"
-      stroke="#121417"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 const TeacherCard = ({ teacher }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -87,17 +36,7 @@ const TeacherCard = ({ teacher }: Props) => {
           alt={`${name} ${surname}`}
           className={styles.avatar}
         />
-        <svg
-          className={styles.onlineDot}
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="6" cy="6" r="6" fill="white" />
-          <circle cx="6" cy="6" r="4" fill="#38CD3E" />
-        </svg>
+        <OnlineDotIcon className={styles.onlineDot} />
       </div>
 
       <div className={styles.content}>
