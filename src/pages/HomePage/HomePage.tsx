@@ -1,6 +1,8 @@
 // 8.1 — HomePage component
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StatsBorderIcon from "../../assets/icons/StatsBorderIcon";
+import Spinner from "../../components/Spinner/Spinner";
 import styles from "./HomePage.module.css";
 
 // 8.4 — Statistics data
@@ -14,9 +16,12 @@ const stats = [
 const HomePage = () => {
   // 8.3 — useNavigate to redirect to /teachers on button click
   const navigate = useNavigate();
+  const [isHeroImageLoading, setIsHeroImageLoading] = useState(true);
 
   return (
     <main className={styles.page}>
+      {isHeroImageLoading && <Spinner />}
+
       <div className={styles.container}>
         {/* 8.2 — Hero section */}
         <section className={styles.hero}>
@@ -48,6 +53,7 @@ const HomePage = () => {
               src="/hero.png"
               alt="Language tutor illustration"
               className={styles.heroImage}
+              onLoad={() => setIsHeroImageLoading(false)}
             />
           </div>
         </section>

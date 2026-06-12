@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import HomePage from "../pages/HomePage";
-import TeachersPage from "../pages/TeachersPage";
+import TeachersPage from "../pages/TeachersPage/TeachersPage";
 import FavoritesPage from "../pages/FavoritesPage";
 
 const AppRouter = () => {
