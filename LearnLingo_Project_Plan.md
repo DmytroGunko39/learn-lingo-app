@@ -226,7 +226,7 @@ src/
 
 ---
 
-### PHASE 11 — Teachers Page
+### PHASE 11 — Teachers Page✅
 
 - [ ] **11.1** Create `src/pages/TeachersPage/TeachersPage.jsx` and `TeachersPage.module.css`
 - [ ] **11.2** Add local state: `teachers` (array), `lastKey` (string), `isLoading` (boolean), `hasMore` (boolean)
@@ -249,6 +249,7 @@ src/
 - [ ] **12.6** In `database.js` write `removeFavorite(userId, teacherId)` — deletes from Firebase
 - [ ] **12.7** Export `useFavorites` custom hook
 - [ ] **12.8** Wrap app in `<FavoritesProvider>` inside `main.jsx`
+- [ ] **12.9** Wire toggleFavorite to call addFavorite/removeFavorite from Firebase
 
 ---
 
