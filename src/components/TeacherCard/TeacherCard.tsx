@@ -1,5 +1,8 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { type Teacher } from "../../firebase/database";
+import { useAuth } from "../../hooks/useAuth";
+import { useFavorites } from "../../hooks/useFavorites";
 import BookIcon from "../../assets/icons/BookIcon";
 import StarIcon from "../../assets/icons/StarIcon";
 import HeartIcon from "../../assets/icons/HeartIcon";
@@ -12,6 +15,17 @@ type Props = {
 
 const TeacherCard = ({ teacher }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { currentUser } = useAuth();
+  const { favorites, toggleFavorite } = useFavorites();
+  const isFavorited = favorites.includes(teacher.id);
+
+  const handleHeartClick = () => {
+    if (!currentUser) {
+      toast.error("Please log in to add to favorites");
+      return;
+    }
+    toggleFavorite(teacher.id);
+  };
 
   const {
     name,
@@ -62,8 +76,12 @@ const TeacherCard = ({ teacher }: Props) => {
             </span>
           </div>
 
-          <button className={styles.heartBtn} aria-label="Add to favorites">
-            <HeartIcon />
+          <button
+            className={styles.heartBtn}
+            aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
+            onClick={handleHeartClick}
+          >
+            <HeartIcon filled={isFavorited} />
           </button>
         </div>
 
