@@ -253,7 +253,7 @@ src/
 
 ---
 
-### PHASE 13 — Heart Button Logic
+### PHASE 13 — Heart Button Logic✅
 
 - [ ] **13.1** In `TeacherCard`, get `currentUser` from `useAuth()` and `favorites` from `useFavorites()`
 - [ ] **13.2** Determine if this teacher is already favorited: check if teacher id exists in `favorites` array
@@ -267,7 +267,7 @@ src/
 
 ---
 
-### PHASE 14 — Favorites Page
+### PHASE 14 — Favorites Page✅
 
 - [ ] **14.1** Create `src/pages/FavoritesPage/FavoritesPage.jsx` and `FavoritesPage.module.css`
 - [ ] **14.2** Wrap `/favorites` route in `<PrivateRoute>` (redirect to `/` if not logged in)
@@ -275,6 +275,8 @@ src/
 - [ ] **14.4** Render the list of favorited teachers using `<TeacherCard />` components
 - [ ] **14.5** If `favorites` is empty → show a message: "You have no favorite teachers yet"
 - [ ] **14.6** Style page the same as Teachers page
+- [ ] **14.7** Add Favorites navigation:
+      "Add a 'Favorites' link in the Header/navbar that navigates to /favorites. The link should be visible only when the user is logged in. Verify that the /favorites route is correctly registered in the router and wrapped in <PrivateRoute>. Test the full flow: log in → click Favorites in navbar → FavoritesPage loads → saved teachers appear with filled hearts."
 
 ---
 

@@ -67,6 +67,12 @@ export const getTeachers = async (
   return { teachers, lastKey: nextLastKey };
 };
 
+export const getTeacherById = async (id: string): Promise<Teacher | null> => {
+  const snapshot = await get(ref(db, `teachers/${id}`));
+  if (!snapshot.exists()) return null;
+  return { id, ...(snapshot.val() as Omit<Teacher, "id">) };
+};
+
 export const getUserFavorites = async (uid: string) => {
   const snapshot = await get(ref(db, `favorites/${uid}`));
   return snapshot.exists() ? snapshot.val() : {};

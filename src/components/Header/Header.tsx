@@ -41,6 +41,16 @@ const Header = () => {
             >
               Teachers
             </NavLink>
+            {currentUser && (
+              <NavLink
+                to="/favorites"
+                className={({ isActive }) =>
+                  isActive ? `${styles.link} ${styles.linkActive}` : styles.link
+                }
+              >
+                Favorites
+              </NavLink>
+            )}
           </nav>
 
           <div className={styles.auth}>

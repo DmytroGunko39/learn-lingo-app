@@ -1,0 +1,17 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 64px;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+.empty {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #121417;
+  margin: auto;
+}
