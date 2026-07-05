@@ -67,6 +67,13 @@ export const getTeachers = async (
   return { teachers, lastKey: nextLastKey };
 };
 
+export const getAllTeachers = async (): Promise<Teacher[]> => {
+  const snapshot = await get(ref(db, "teachers"));
+  if (!snapshot.exists()) return [];
+  const data = snapshot.val() as Record<string, Omit<Teacher, "id">>;
+  return Object.entries(data).map(([id, teacher]) => ({ id, ...teacher }));
+};
+
 export const getTeacherById = async (id: string): Promise<Teacher | null> => {
   const snapshot = await get(ref(db, `teachers/${id}`));
   if (!snapshot.exists()) return null;

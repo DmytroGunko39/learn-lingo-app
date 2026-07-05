@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTeachers, type Teacher } from "../../firebase/database";
+import { getTeachers, getAllTeachers, type Teacher } from "../../firebase/database";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import Spinner from "../../components/Spinner/Spinner";
 import Filters, { type FilterValues } from "../../components/Filters/Filters";
@@ -7,16 +7,18 @@ import { filterTeachers } from "../../utils/filterTeachers";
 import { extractLanguages, extractLevels } from "../../utils/extractUniqueValues";
 import styles from "./TeachersPage.module.css";
 
+const emptyFilters: FilterValues = { language: "", level: "", price: "" };
+
+const isFilterActive = (f: FilterValues) =>
+  f.language !== "" || f.level !== "" || f.price !== "";
+
 const TeachersPage = () => {
   const [teachers, setTeachers] = useState<Teacher[]>([]);
+  const [allTeachers, setAllTeachers] = useState<Teacher[] | null>(null);
   const [lastKey, setLastKey] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
-  const [filters, setFilters] = useState<FilterValues>({
-    language: "",
-    level: "",
-    price: "",
-  });
+  const [filters, setFilters] = useState<FilterValues>(emptyFilters);
 
   useEffect(() => {
     getTeachers(null, 4).then((page) => {
@@ -27,9 +29,23 @@ const TeachersPage = () => {
     });
   }, []);
 
-  const languages = extractLanguages(teachers);
-  const levels = extractLevels(teachers);
-  const filteredTeachers = filterTeachers(teachers, filters);
+  const handleFilterChange = (newFilters: FilterValues) => {
+    setFilters(newFilters);
+    if (isFilterActive(newFilters) && allTeachers === null) {
+      setIsLoading(true);
+      getAllTeachers().then((all) => {
+        setAllTeachers(all);
+        setIsLoading(false);
+      });
+    }
+  };
+
+  const active = isFilterActive(filters);
+  const displayTeachers = active ? (allTeachers ?? []) : teachers;
+
+  const languages = extractLanguages(displayTeachers);
+  const levels = extractLevels(displayTeachers);
+  const filteredTeachers = filterTeachers(displayTeachers, filters);
 
   const handleLoadMore = () => {
     setIsLoading(true);
@@ -47,7 +63,7 @@ const TeachersPage = () => {
         languages={languages}
         levels={levels}
         filters={filters}
-        onChange={setFilters}
+        onChange={handleFilterChange}
       />
 
       {filteredTeachers.map((teacher) => (
@@ -56,7 +72,7 @@ const TeachersPage = () => {
 
       {isLoading && <Spinner />}
 
-      {!isLoading && hasMore && (
+      {!isLoading && !active && hasMore && (
         <button className={styles.loadMoreBtn} onClick={handleLoadMore}>
           Load more
         </button>
