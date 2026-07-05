@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { getTeachers, type Teacher } from "../../firebase/database";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import Spinner from "../../components/Spinner/Spinner";
+import Filters, { type FilterValues } from "../../components/Filters/Filters";
+import { filterTeachers } from "../../utils/filterTeachers";
+import { extractLanguages, extractLevels } from "../../utils/extractUniqueValues";
 import styles from "./TeachersPage.module.css";
 
 const TeachersPage = () => {
@@ -9,6 +12,11 @@ const TeachersPage = () => {
   const [lastKey, setLastKey] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
+  const [filters, setFilters] = useState<FilterValues>({
+    language: "",
+    level: "",
+    price: "",
+  });
 
   useEffect(() => {
     getTeachers(null, 4).then((page) => {
@@ -18,6 +26,10 @@ const TeachersPage = () => {
       setIsLoading(false);
     });
   }, []);
+
+  const languages = extractLanguages(teachers);
+  const levels = extractLevels(teachers);
+  const filteredTeachers = filterTeachers(teachers, filters);
 
   const handleLoadMore = () => {
     setIsLoading(true);
@@ -31,7 +43,14 @@ const TeachersPage = () => {
 
   return (
     <main className={styles.page}>
-      {teachers.map((teacher) => (
+      <Filters
+        languages={languages}
+        levels={levels}
+        filters={filters}
+        onChange={setFilters}
+      />
+
+      {filteredTeachers.map((teacher) => (
         <TeacherCard key={teacher.id} teacher={teacher} />
       ))}
 

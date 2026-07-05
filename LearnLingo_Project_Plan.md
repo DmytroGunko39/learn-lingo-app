@@ -294,6 +294,7 @@ src/
 - [ ] **15.6** Add same `Filters` component to Favorites page
 - [ ] **15.7** On Favorites page, filters work on the already-loaded `favorites` array (client-side filtering)
 - [ ] **15.8** Test all 3 filters work correctly, including combinations
+- [ ] **15.9** Style the Filters component in Filters.module.css to match the overall app design.
 
 ---
 

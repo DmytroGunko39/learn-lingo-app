@@ -1,0 +1,54 @@
+.filters {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 20px;
+  width: 100%;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8b8b8b;
+  letter-spacing: 0.01em;
+}
+
+.select {
+  width: 221px;
+  height: 64px;
+  background-color: #fff;
+  border: 1px solid #d4d4d4;
+  border-radius: 14px;
+  padding: 0 48px 0 18px;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #121417;
+  cursor: pointer;
+
+  /* Remove native arrow */
+  appearance: none;
+  -webkit-appearance: none;
+
+  /* Custom chevron */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23121417' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 20px 20px;
+  outline: none;
+}
+
+.select:hover {
+  border-color: #b0b0b0;
+}
+
+.select:focus {
+  border-color: #121417;
+}
