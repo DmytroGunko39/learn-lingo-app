@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 import { type Teacher } from "../../firebase/database";
 import { useAuth } from "../../hooks/useAuth";
 import { useFavorites } from "../../hooks/useFavorites";
+import Modal from "../Modal/Modal";
+import BookingForm from "../BookingForm/BookingForm";
 import BookIcon from "../../assets/icons/BookIcon";
 import StarIcon from "../../assets/icons/StarIcon";
 import HeartIcon from "../../assets/icons/HeartIcon";
@@ -15,6 +17,7 @@ type Props = {
 
 const TeacherCard = ({ teacher }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const { currentUser } = useAuth();
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorited = favorites.includes(teacher.id);
@@ -42,7 +45,10 @@ const TeacherCard = ({ teacher }: Props) => {
     experience,
   } = teacher;
 
+  const closeBooking = () => setIsBookingOpen(false);
+
   return (
+    <>
     <div className={styles.card}>
       <div className={styles.avatarWrapper}>
         <img
@@ -156,10 +162,26 @@ const TeacherCard = ({ teacher }: Props) => {
         </div>
 
         {isExpanded && (
-          <button className={styles.bookBtn}>Book trial lesson</button>
+          <button
+            className={styles.bookBtn}
+            onClick={() => setIsBookingOpen(true)}
+          >
+            Book trial lesson
+          </button>
         )}
       </div>
     </div>
+
+    {isBookingOpen && (
+      <Modal onClose={closeBooking}>
+        <BookingForm
+          onClose={closeBooking}
+          teacherName={`${name} ${surname}`}
+          teacherAvatar={avatar_url}
+        />
+      </Modal>
+    )}
+    </>
   );
 };
 

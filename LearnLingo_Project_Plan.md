@@ -300,6 +300,7 @@ src/
       -When clicked, reset all three dropdowns back to 'All' (empty values)
       -Be placed next to the dropdowns, aligned with them
       -Use the exact same styling and colors as the 'Load More' button same background, same font, same border radius, same padding.
+- [ ] **15.9.2** Add custom dropdown component. Create a reusable src/components/CustomSelect/CustomSelect.jsx and CustomSelect.module.css.
 
 ---
 
@@ -320,6 +321,22 @@ src/
 - [ ] **16.5** In `TeacherCard`: "Book trial lesson" button opens `<Modal>` with `<BookingForm>` inside
 - [ ] **16.6** Pass teacher's name into the modal title: "Book trial lesson with {name}"
 - [ ] **16.7** Style form with CSS Modules matching Figma
+- [ ] **16.8** Save booking data to Firebase when the BookingForm is submitted:
+      In database.ts add a saveBooking(bookingData) function that uses push(ref(db, 'bookings'), bookingData) to save to Firebase
+      The booking object should contain:
+      userId — from auth.currentUser?.uid
+      teacherId — passed as prop to BookingForm
+      reason, fullName, email, phone — from form data
+      createdAt — using serverTimestamp()
+      Pass teacherId as a prop from TeacherCard to BookingForm
+      Update Firebase rules to allow authenticated users to write to bookings/:
+
+json'bookings': {
+'.read': 'auth != null',
+'.write': 'auth != null'
+}
+
+On successful save → show toast success message → close modal
 
 ---
 
