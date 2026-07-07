@@ -63,3 +63,22 @@
 .select:focus {
   border-color: #121417;
 }
+
+.showAllBtn {
+  height: 48px;
+  padding: 0 28px;
+  background: #f4c550;
+  border: none;
+  border-radius: 12px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #121417;
+  cursor: pointer;
+  white-space: nowrap;
+  align-self: flex-end;
+}
+
+.showAllBtn:hover {
+  background-color: #f0b429;
+}

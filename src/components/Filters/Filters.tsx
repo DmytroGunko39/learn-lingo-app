@@ -15,6 +15,10 @@ type Props = {
 
 const PRICE_OPTIONS = ["20", "30", "40", "50"];
 
+const emptyFilters: FilterValues = { language: "", level: "", price: "" };
+const hasActiveFilter = (f: FilterValues) =>
+  f.language !== "" || f.level !== "" || f.price !== "";
+
 const Filters = ({ languages, levels, filters, onChange }: Props) => {
   const set =
     (key: keyof FilterValues) => (e: React.ChangeEvent<HTMLSelectElement>) =>
@@ -69,6 +73,15 @@ const Filters = ({ languages, levels, filters, onChange }: Props) => {
           ))}
         </select>
       </div>
+
+      {hasActiveFilter(filters) && (
+        <button
+          className={styles.showAllBtn}
+          onClick={() => onChange(emptyFilters)}
+        >
+          Show "All"
+        </button>
+      )}
     </div>
   );
 };

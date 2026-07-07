@@ -280,7 +280,7 @@ src/
 
 ---
 
-### PHASE 15 — Filters
+### PHASE 15 — Filters✅
 
 - [ ] **15.1** Create `src/components/Filters/Filters.jsx` and `Filters.module.css`
 - [ ] **15.2** Add 3 dropdowns (select inputs):
@@ -295,6 +295,11 @@ src/
 - [ ] **15.7** On Favorites page, filters work on the already-loaded `favorites` array (client-side filtering)
 - [ ] **15.8** Test all 3 filters work correctly, including combinations
 - [ ] **15.9** Style the Filters component in Filters.module.css to match the overall app design.
+- [ ] **15.9.1** Add a Show 'All' button to the Filters component. The button should:
+      -Only appear when at least one filter is active (language, level, or price is selected)
+      -When clicked, reset all three dropdowns back to 'All' (empty values)
+      -Be placed next to the dropdowns, aligned with them
+      -Use the exact same styling and colors as the 'Load More' button same background, same font, same border radius, same padding.
 
 ---
 
