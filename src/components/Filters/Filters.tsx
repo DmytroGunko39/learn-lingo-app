@@ -1,3 +1,4 @@
+import CustomSelect from "../CustomSelect/CustomSelect";
 import styles from "./Filters.module.css";
 
 export type FilterValues = {
@@ -14,64 +15,45 @@ type Props = {
 };
 
 const PRICE_OPTIONS = ["20", "30", "40", "50"];
-
 const emptyFilters: FilterValues = { language: "", level: "", price: "" };
 const hasActiveFilter = (f: FilterValues) =>
   f.language !== "" || f.level !== "" || f.price !== "";
 
 const Filters = ({ languages, levels, filters, onChange }: Props) => {
-  const set =
-    (key: keyof FilterValues) => (e: React.ChangeEvent<HTMLSelectElement>) =>
-      onChange({ ...filters, [key]: e.target.value });
+  const set = (key: keyof FilterValues) => (val: string) =>
+    onChange({ ...filters, [key]: val });
 
   return (
     <div className={styles.filters}>
       <div className={styles.group}>
-        <label className={styles.label}>Languages</label>
-        <select
-          className={styles.select}
+        <CustomSelect
+          label="Languages"
+          options={languages}
           value={filters.language}
           onChange={set("language")}
-        >
-          <option value="">All</option>
-          {languages.map((lang) => (
-            <option key={lang} value={lang}>
-              {lang}
-            </option>
-          ))}
-        </select>
+          placeholder="All"
+        />
       </div>
 
       <div className={styles.group}>
-        <label className={styles.label}>Level of knowledge</label>
-        <select
-          className={styles.select}
+        <CustomSelect
+          label="Level of knowledge"
+          options={levels}
           value={filters.level}
           onChange={set("level")}
-        >
-          <option value="">All</option>
-          {levels.map((level) => (
-            <option key={level} value={level}>
-              {level}
-            </option>
-          ))}
-        </select>
+          placeholder="All"
+        />
       </div>
 
       <div className={styles.group}>
-        <label className={styles.label}>Price per hour</label>
-        <select
-          className={styles.select}
+        <CustomSelect
+          label="Price per hour"
+          options={PRICE_OPTIONS}
           value={filters.price}
           onChange={set("price")}
-        >
-          <option value="">All</option>
-          {PRICE_OPTIONS.map((price) => (
-            <option key={price} value={price}>
-              {price} $
-            </option>
-          ))}
-        </select>
+          placeholder="All"
+          suffix=" $"
+        />
       </div>
 
       {hasActiveFilter(filters) && (
