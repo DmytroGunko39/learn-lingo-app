@@ -37,7 +37,9 @@ const Modal = ({ onClose, children }: ModalProps) => {
         <button className={styles.closeBtn} onClick={onClose} aria-label="Close modal">
           <CloseIcon />
         </button>
-        {children}
+        <div className={styles.content}>
+          {children}
+        </div>
       </div>
     </div>,
     document.body

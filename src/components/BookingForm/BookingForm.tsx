@@ -38,7 +38,12 @@ type Props = {
   teacherAvatar?: string;
 };
 
-const BookingForm = ({ onClose, teacherId, teacherName, teacherAvatar }: Props) => {
+const BookingForm = ({
+  onClose,
+  teacherId,
+  teacherName,
+  teacherAvatar,
+}: Props) => {
   const {
     register,
     handleSubmit,
@@ -143,7 +148,11 @@ const BookingForm = ({ onClose, teacherId, teacherName, teacherAvatar }: Props) 
         )}
       </div>
 
-      <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+      <button
+        type="submit"
+        className={styles.submitBtn}
+        disabled={isSubmitting}
+      >
         {isSubmitting ? "Booking..." : "Book"}
       </button>
     </form>

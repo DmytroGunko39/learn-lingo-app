@@ -12,11 +12,37 @@
   position: relative;
   background: #fff;
   border-radius: 30px;
-  padding: 64px;
   width: 599px;
   max-height: 90vh;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+.content {
+  padding: 64px;
+  max-height: 90vh;
+  box-sizing: border-box;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #f4c550 #f0f0f0;
+}
+
+.content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 999px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #f4c550;
+  border-radius: 999px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #f0b429;
 }
 
 .closeBtn {
