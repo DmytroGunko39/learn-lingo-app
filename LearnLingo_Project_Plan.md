@@ -330,13 +330,12 @@ src/
       createdAt — using serverTimestamp()
       Pass teacherId as a prop from TeacherCard to BookingForm
       Update Firebase rules to allow authenticated users to write to bookings/:
-
-json'bookings': {
-'.read': 'auth != null',
-'.write': 'auth != null'
-}
-
-On successful save → show toast success message → close modal
+      json'bookings': {
+      '.read': 'auth != null',
+      '.write': 'auth != null'
+      }
+      On successful save → show toast success message → close modal
+- [ ] **16.9** Add a mobile drawer implementation for the BookingForm. On mobile screens (below 768px) instead of a centered popup modal, the booking form should slide up from the bottom of the screen as a drawer.
 
 ---
 

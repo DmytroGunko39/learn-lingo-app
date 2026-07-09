@@ -1,25 +1,33 @@
-import { useEffect, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import CloseIcon from "../../assets/icons/CloseIcon";
 import styles from "./Modal.module.css";
 
-// 6.2 — modal receives onClose and children as props
 type ModalProps = {
   onClose: () => void;
   children: ReactNode;
 };
 
 const Modal = ({ onClose, children }: ModalProps) => {
-  // 6.5 — close modal on Escape key press
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleClose = useCallback(() => {
+    if (window.innerWidth < 768) {
+      setIsClosing(true);
+      setTimeout(() => onClose(), 300);
+    } else {
+      onClose();
+    }
+  }, [onClose]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") handleClose();
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onClose]);
+  }, [handleClose]);
 
-  // 6.6 — disable body scroll while modal is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -27,16 +35,16 @@ const Modal = ({ onClose, children }: ModalProps) => {
     };
   }, []);
 
-  // 6.7 — render outside #root via createPortal
   return createPortal(
-    // 6.3 — backdrop: clicking it closes the modal
-    <div className={styles.backdrop} onClick={onClose}>
-      {/* stopPropagation prevents clicks inside the modal from reaching the backdrop */}
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        {/* 6.4 — ✕ close button */}
-        <button className={styles.closeBtn} onClick={onClose} aria-label="Close modal">
+    <div className={styles.backdrop} onClick={handleClose}>
+      <div
+        className={`${styles.modal}${isClosing ? ` ${styles.closing}` : ""}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className={styles.closeBtn} onClick={handleClose} aria-label="Close modal">
           <CloseIcon />
         </button>
+        <div className={styles.dragHandle} aria-hidden="true" />
         <div className={styles.content}>
           {children}
         </div>
