@@ -3,52 +3,38 @@ import {
   ref,
   get,
   set,
+  push,
   remove,
   query,
   orderByKey,
   startAfter,
   limitToFirst,
+  serverTimestamp,
 } from "firebase/database";
 import { app } from "./firebaseConfig";
+import { auth } from "./auth";
+import type { Teacher, TeachersPage } from "../types/teacher";
+import type { BookingInput } from "../types/booking";
+
+export type { Teacher, TeachersPage };
 
 export const db = getDatabase(app);
 
-export type Teacher = {
-  id: string;
-  name: string;
-  surname: string;
-  languages: string[];
-  levels: string[];
-  rating: number;
-  reviews: {
-    reviewer_name: string;
-    reviewer_rating: number;
-    comment: string;
-    reviewer_avatar?: string;
-  }[];
-  price_per_hour: number;
-  lessons_done: number;
-  avatar_url: string;
-  lesson_info: string;
-  conditions: string[];
-  experience: string;
-};
-
-export type TeachersPage = {
-  teachers: Teacher[];
-  lastKey: string | null;
-};
-
 export const getTeachers = async (
   lastKey: string | null = null,
-  limit: number = 4
+  limit: number = 4,
 ): Promise<TeachersPage> => {
   const teachersRef = ref(db, "teachers");
 
   const q =
     lastKey === null
       ? query(teachersRef, orderByKey(), limitToFirst(limit))
-      : query(teachersRef, orderByKey(), startAfter(lastKey), limitToFirst(limit));
+      : query(
+          teachersRef,
+          orderByKey(),
+          startAfter(lastKey),
+          limitToFirst(limit),
+        );
 
   const snapshot = await get(q);
 
@@ -62,7 +48,8 @@ export const getTeachers = async (
     ...teacher,
   }));
 
-  const nextLastKey = teachers.length === limit ? teachers[teachers.length - 1].id : null;
+  const nextLastKey =
+    teachers.length === limit ? teachers[teachers.length - 1].id : null;
 
   return { teachers, lastKey: nextLastKey };
 };
@@ -90,3 +77,10 @@ export const addFavorite = (uid: string, teacherId: string) =>
 
 export const removeFavorite = (uid: string, teacherId: string) =>
   remove(ref(db, `favorites/${uid}/${teacherId}`));
+
+export const saveBooking = (data: BookingInput) =>
+  push(ref(db, "bookings"), {
+    ...data,
+    userId: auth.currentUser?.uid ?? null,
+    createdAt: serverTimestamp(),
+  });

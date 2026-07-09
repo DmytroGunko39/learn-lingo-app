@@ -1,11 +1,8 @@
 import CustomSelect from "../CustomSelect/CustomSelect";
+import type { FilterValues } from "../../types/filters";
 import styles from "./Filters.module.css";
 
-export type FilterValues = {
-  language: string;
-  level: string;
-  price: string;
-};
+export type { FilterValues };
 
 type Props = {
   languages: string[];

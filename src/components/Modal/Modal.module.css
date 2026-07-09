@@ -13,7 +13,10 @@
   background: #fff;
   border-radius: 30px;
   padding: 64px;
-  width: 565px;
+  width: 599px;
+  max-height: 90vh;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .closeBtn {

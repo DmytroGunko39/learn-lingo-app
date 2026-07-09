@@ -1,6 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { type Teacher } from "../../firebase/database";
+import type { Teacher } from "../../types/teacher";
 import { useAuth } from "../../hooks/useAuth";
 import { useFavorites } from "../../hooks/useFavorites";
 import Modal from "../Modal/Modal";
@@ -176,6 +176,7 @@ const TeacherCard = ({ teacher }: Props) => {
       <Modal onClose={closeBooking}>
         <BookingForm
           onClose={closeBooking}
+          teacherId={teacher.id}
           teacherName={`${name} ${surname}`}
           teacherAvatar={avatar_url}
         />

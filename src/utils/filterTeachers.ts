@@ -1,5 +1,5 @@
-import type { Teacher } from "../firebase/database";
-import type { FilterValues } from "../components/Filters/Filters";
+import type { Teacher } from "../types/teacher";
+import type { FilterValues } from "../types/filters";
 
 export const filterTeachers = (
   teachers: Teacher[],

@@ -351,6 +351,11 @@ On successful save → show toast success message → close modal
 - [ ] **17.7** Remove all `console.log` statements from code
 - [ ] **17.8** Remove all code comments
 - [ ] **17.9** Check HTML is semantic (use `<header>`, `<main>`, `<section>`, `<ul>`, `<li>`, etc.)
+- [ ] **17.9.1**
+      Option 1 — EmailJS ✅ easiest
+      A free service that sends emails directly from the frontend. No backend needed. Perfect for a portfolio project.
+      Option 2 — Firebase Cloud Functions
+      A small backend function that triggers when a booking is saved and sends an email automatically. More professional but more complex.
 
 ---
 

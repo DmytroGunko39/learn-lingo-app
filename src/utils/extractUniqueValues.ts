@@ -1,4 +1,4 @@
-import type { Teacher } from "../firebase/database";
+import type { Teacher } from "../types/teacher";
 
 export const extractLanguages = (teachers: Teacher[]): string[] =>
   [...new Set(teachers.flatMap((t) => t.languages))].sort();

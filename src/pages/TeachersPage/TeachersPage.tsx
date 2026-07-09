@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { getTeachers, getAllTeachers, type Teacher } from "../../firebase/database";
+import { getTeachers, getAllTeachers } from "../../firebase/database";
+import type { Teacher } from "../../types/teacher";
+import type { FilterValues } from "../../types/filters";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import Spinner from "../../components/Spinner/Spinner";
-import Filters, { type FilterValues } from "../../components/Filters/Filters";
+import Filters from "../../components/Filters/Filters";
 import { filterTeachers } from "../../utils/filterTeachers";
 import { extractLanguages, extractLevels } from "../../utils/extractUniqueValues";
 import styles from "./TeachersPage.module.css";

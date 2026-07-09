@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import toast from "react-hot-toast";
+import { saveBooking } from "../../firebase/database";
 import styles from "./BookingForm.module.css";
 
 const schema = yup.object({
@@ -32,11 +33,12 @@ const REASONS = [
 
 type Props = {
   onClose: () => void;
+  teacherId: string;
   teacherName?: string;
   teacherAvatar?: string;
 };
 
-const BookingForm = ({ onClose, teacherName, teacherAvatar }: Props) => {
+const BookingForm = ({ onClose, teacherId, teacherName, teacherAvatar }: Props) => {
   const {
     register,
     handleSubmit,
@@ -45,7 +47,14 @@ const BookingForm = ({ onClose, teacherName, teacherAvatar }: Props) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: FormData) => {
+    await saveBooking({
+      teacherId,
+      reason: data.reason,
+      fullName: data.fullName,
+      email: data.email,
+      phone: data.phone,
+    });
     toast.success("Your booking has been submitted!");
     onClose();
   };
