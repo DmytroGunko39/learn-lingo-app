@@ -272,3 +272,249 @@
   background-color: #f4c550;
   border-color: #f4c550;
 }
+
+/* ── Tablet (768px – 1279px): 2-column grid, horizontal card ── */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .card {
+    width: 100%;
+    gap: 20px;
+    padding: 20px;
+    min-height: unset;
+  }
+
+  /* Top bar: row 1 = label + heart, row 2 = stats */
+  .topBar {
+    flex-wrap: wrap;
+    row-gap: 6px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .statsRow {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+  }
+
+  .heartBtn {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .statItem {
+    font-size: 13px;
+    gap: 4px;
+  }
+
+  .name {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .infoRow {
+    font-size: 15px;
+  }
+
+  .bookBtn {
+    width: 100%;
+    height: 52px;
+    font-size: 16px;
+  }
+}
+
+/* ── Mobile (< 768px): 2-column compact card ────────────────── */
+@media (max-width: 767px) {
+  /* Compact (not expanded) */
+  .card {
+    position: relative;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 14px 10px;
+    width: 100%;
+    min-height: unset;
+  }
+
+  .avatarWrapper {
+    align-self: center;
+    width: 70px;
+    height: 70px;
+    border-width: 2px;
+  }
+
+  .avatar {
+    width: 54px;
+    height: 54px;
+  }
+
+  .onlineDot {
+    width: 10px;
+    height: 10px;
+    right: 12px;
+    top: 8px;
+  }
+
+  /* topBar stays in DOM but collapses to zero height;
+     heartBtn is pulled out via absolute so it always shows */
+  .topBar {
+    margin-bottom: 0;
+  }
+
+  .languagesLabel {
+    display: none;
+  }
+
+  .statsRow {
+    display: none;
+  }
+
+  .heartBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .name {
+    font-size: clamp(12px, 3vw, 14px);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .infoBlock {
+    display: none;
+  }
+
+  .readMoreBtn {
+    font-size: 12px;
+    margin-bottom: 8px;
+    align-self: center;
+  }
+
+  .levels {
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .levelTag {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .experience {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .reviews {
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .reviewerName {
+    font-size: 14px;
+  }
+
+  .reviewComment {
+    font-size: 14px;
+  }
+
+  .bookBtn {
+    width: 100%;
+    height: 44px;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  /* ── Expanded: spans both grid columns, all content visible ── */
+  .cardExpanded {
+    grid-column: 1 / -1;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 16px;
+    gap: 8px;
+  }
+
+  .card.cardExpanded .avatarWrapper {
+    align-self: flex-start;
+    width: 80px;
+    height: 80px;
+    border-width: 3px;
+  }
+
+  .card.cardExpanded .avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .card.cardExpanded .topBar {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .card.cardExpanded .languagesLabel {
+    display: block;
+    font-size: 14px;
+  }
+
+  .card.cardExpanded .statsRow {
+    display: flex;
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+  }
+
+  .card.cardExpanded .statItem {
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .card.cardExpanded .divider {
+    display: none;
+  }
+
+  .card.cardExpanded .heartBtn {
+    position: static;
+    order: 2;
+    margin-left: auto;
+  }
+
+  .card.cardExpanded .name {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+
+  .card.cardExpanded .infoBlock {
+    display: flex;
+  }
+
+  .card.cardExpanded .infoRow {
+    font-size: 14px;
+  }
+
+  .card.cardExpanded .readMoreBtn {
+    align-self: flex-start;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .card.cardExpanded .levels {
+    justify-content: flex-start;
+  }
+}

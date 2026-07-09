@@ -161,6 +161,22 @@
   color: #f44336;
 }
 
+/* ── Mobile (< 768px) ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .title {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  .subtitle {
+    font-size: clamp(14px, 3.8vw, 16px);
+  }
+
+  .reasonHeading {
+    width: 100%;
+    font-size: clamp(18px, 5vw, 22px);
+  }
+}
+
 /* Submit */
 .submitBtn {
   width: 100%;

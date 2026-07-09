@@ -3,6 +3,8 @@
 .header {
   width: 100%;
   background-color: #fff;
+  position: relative;
+  z-index: 200;
 }
 
 .container {
@@ -12,7 +14,7 @@
   position: relative;
 }
 
-/* Nav */
+/* ── Desktop nav ────────────────────────────────────────────── */
 .nav {
   display: flex;
   align-items: center;
@@ -32,11 +34,12 @@
   transition: color 0.2s;
 }
 
-.link:hover {
+.link:hover,
+.linkActive {
   color: #3470ff;
 }
 
-/* Auth */
+/* ── Desktop auth ───────────────────────────────────────────── */
 .auth {
   display: flex;
   align-items: center;
@@ -93,7 +96,6 @@
 .logoutBtn {
   width: 166px;
   height: 48px;
-  /* padding: 14px 39px; */
   background: none;
   border: 2px solid #121417;
   border-radius: 12px;
@@ -108,4 +110,119 @@
 .logoutBtn:hover {
   background-color: #121417;
   color: #fff;
+}
+
+/* ── Hamburger — hidden on desktop ─────────────────────────── */
+.hamburgerBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #121417;
+  padding: 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* ── Mobile dropdown — hidden on desktop ────────────────────── */
+.mobileMenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #fff;
+}
+
+.mobileMenuOpen {
+  max-height: 520px;
+  border-top: 1px solid rgba(18, 20, 23, 0.08);
+}
+
+@media (min-width: 768px) {
+  .mobileMenu {
+    display: none;
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileLink {
+  display: block;
+  padding: 14px 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #121417;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(18, 20, 23, 0.05);
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.mobileLink:hover {
+  background-color: #f8f8f8;
+}
+
+.mobileLinkActive {
+  color: #3470ff;
+  font-weight: 500;
+}
+
+.mobileAuthActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 20px 24px;
+}
+
+.mobileAuthActions .loginBtn {
+  justify-content: flex-start;
+}
+
+.mobileAuthActions .registerBtn {
+  width: 100%;
+}
+
+.mobileAuthActions .logoutBtn {
+  width: 100%;
+}
+
+.mobileEmail {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #121417;
+  opacity: 0.7;
+}
+
+/* ── Tablet (768px – 1279px) ────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    padding: 20px 32px;
+  }
+
+  .email {
+    display: none;
+  }
+}
+
+/* ── Mobile (< 768px) ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .container {
+    padding: 14px 16px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .auth {
+    display: none;
+  }
+
+  .hamburgerBtn {
+    display: flex;
+  }
 }

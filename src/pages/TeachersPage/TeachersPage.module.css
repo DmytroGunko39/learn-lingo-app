@@ -26,3 +26,52 @@
 .loadMoreBtn:hover {
   background-color: #fbe9ba;
 }
+
+/* Desktop: single column, cards centred at 1184px */
+.cardGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  align-items: center;
+}
+
+/* ── Tablet (768px – 1279px) ────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .page {
+    padding: 40px 32px;
+    align-items: stretch;
+  }
+
+  .cardGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+    width: 100%;
+  }
+}
+
+/* ── Mobile (< 768px) ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .page {
+    padding: 24px 16px;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .cardGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: start;
+    width: 100%;
+  }
+
+  .loadMoreBtn {
+    width: 100%;
+    height: 52px;
+    font-size: 16px;
+    padding: 0;
+  }
+}

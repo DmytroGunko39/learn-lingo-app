@@ -49,7 +49,7 @@ const TeacherCard = ({ teacher }: Props) => {
 
   return (
     <>
-    <div className={styles.card}>
+    <div className={`${styles.card}${isExpanded ? ` ${styles.cardExpanded}` : ""}`}>
       <div className={styles.avatarWrapper}>
         <img
           src={avatar_url}

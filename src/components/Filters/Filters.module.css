@@ -39,3 +39,40 @@
 .showAllBtn:hover {
   background-color: #fbe9ba;
 }
+
+/* ── Tablet (768px – 1279px) ────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .filters {
+    width: 100%;
+  }
+
+  .group,
+  .group:nth-child(2),
+  .group:nth-child(3) {
+    flex: 1;
+    width: auto;
+  }
+}
+
+/* ── Mobile (< 768px) ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .filters {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .group,
+  .group:nth-child(2),
+  .group:nth-child(3) {
+    width: 100%;
+    flex: unset;
+  }
+
+  .showAllBtn {
+    width: 100%;
+    font-size: clamp(13px, 3.5vw, 16px);
+    align-self: stretch;
+  }
+}

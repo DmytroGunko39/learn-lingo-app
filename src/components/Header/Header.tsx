@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { logoutUser } from "../../firebase/auth";
@@ -14,40 +14,46 @@ type ModalType = "login" | "register" | null;
 const Header = () => {
   const { currentUser } = useAuth();
   const [modalType, setModalType] = useState<ModalType>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   const closeModal = () => setModalType(null);
+  const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleOutside = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, [menuOpen]);
+
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    isActive ? `${styles.link} ${styles.linkActive}` : styles.link;
+
+  const mobileLinkClass = ({ isActive }: { isActive: boolean }) =>
+    isActive
+      ? `${styles.mobileLink} ${styles.mobileLinkActive}`
+      : styles.mobileLink;
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} ref={headerRef}>
         <div className={styles.container}>
           <Logo />
 
           <nav className={styles.nav}>
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) =>
-                isActive ? `${styles.link} ${styles.linkActive}` : styles.link
-              }
-            >
+            <NavLink to="/" end className={navLinkClass}>
               Home
             </NavLink>
-            <NavLink
-              to="/teachers"
-              className={({ isActive }) =>
-                isActive ? `${styles.link} ${styles.linkActive}` : styles.link
-              }
-            >
+            <NavLink to="/teachers" className={navLinkClass}>
               Teachers
             </NavLink>
             {currentUser && (
-              <NavLink
-                to="/favorites"
-                className={({ isActive }) =>
-                  isActive ? `${styles.link} ${styles.linkActive}` : styles.link
-                }
-              >
+              <NavLink to="/favorites" className={navLinkClass}>
                 Favorites
               </NavLink>
             )}
@@ -73,6 +79,109 @@ const Header = () => {
                 <button
                   className={styles.registerBtn}
                   onClick={() => setModalType("register")}
+                >
+                  Registration
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Hamburger button — mobile only */}
+          <button
+            className={styles.hamburgerBtn}
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? (
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
+          </button>
+        </div>
+
+        {/* Mobile dropdown menu */}
+        <div
+          className={`${styles.mobileMenu}${menuOpen ? ` ${styles.mobileMenuOpen}` : ""}`}
+        >
+          <nav className={styles.mobileNav}>
+            <NavLink to="/" end className={mobileLinkClass} onClick={closeMenu}>
+              Home
+            </NavLink>
+            <NavLink
+              to="/teachers"
+              className={mobileLinkClass}
+              onClick={closeMenu}
+            >
+              Teachers
+            </NavLink>
+            {currentUser && (
+              <NavLink
+                to="/favorites"
+                className={mobileLinkClass}
+                onClick={closeMenu}
+              >
+                Favorites
+              </NavLink>
+            )}
+          </nav>
+
+          <div className={styles.mobileAuthActions}>
+            {currentUser ? (
+              <>
+                <span className={styles.mobileEmail}>{currentUser.email}</span>
+                <button
+                  className={styles.logoutBtn}
+                  onClick={() => {
+                    logoutUser();
+                    closeMenu();
+                  }}
+                >
+                  Log out
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className={styles.loginBtn}
+                  onClick={() => {
+                    setModalType("login");
+                    closeMenu();
+                  }}
+                >
+                  <LoginArrowIcon />
+                  Log in
+                </button>
+                <button
+                  className={styles.registerBtn}
+                  onClick={() => {
+                    setModalType("register");
+                    closeMenu();
+                  }}
                 >
                   Registration
                 </button>

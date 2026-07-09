@@ -68,9 +68,11 @@ const TeachersPage = () => {
         onChange={handleFilterChange}
       />
 
-      {filteredTeachers.map((teacher) => (
-        <TeacherCard key={teacher.id} teacher={teacher} />
-      ))}
+      <div className={styles.cardGrid}>
+        {filteredTeachers.map((teacher) => (
+          <TeacherCard key={teacher.id} teacher={teacher} />
+        ))}
+      </div>
 
       {isLoading && <Spinner />}
 

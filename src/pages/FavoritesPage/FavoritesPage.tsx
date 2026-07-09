@@ -44,9 +44,11 @@ const FavoritesPage = () => {
       {filteredTeachers.length === 0 ? (
         <p className={styles.empty}>You have no favorite teachers yet.</p>
       ) : (
-        filteredTeachers.map((teacher) => (
-          <TeacherCard key={teacher.id} teacher={teacher} />
-        ))
+        <div className={styles.cardGrid}>
+          {filteredTeachers.map((teacher) => (
+            <TeacherCard key={teacher.id} teacher={teacher} />
+          ))}
+        </div>
       )}
     </main>
   );

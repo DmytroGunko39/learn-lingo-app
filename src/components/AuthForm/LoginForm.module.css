@@ -101,3 +101,14 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* ── Mobile (< 768px) ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .title {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  .submitBtn {
+    width: 100%;
+  }
+}
