@@ -9,6 +9,7 @@ import BookIcon from "../../assets/icons/BookIcon";
 import StarIcon from "../../assets/icons/StarIcon";
 import HeartIcon from "../../assets/icons/HeartIcon";
 import OnlineDotIcon from "../../assets/icons/OnlineDotIcon";
+import ChevronIcon from "../../assets/icons/ChevronIcon";
 import styles from "./TeacherCard.module.css";
 
 type Props = {
@@ -162,12 +163,22 @@ const TeacherCard = ({ teacher }: Props) => {
         </div>
 
         {isExpanded && (
-          <button
-            className={styles.bookBtn}
-            onClick={() => setIsBookingOpen(true)}
-          >
-            Book trial lesson
-          </button>
+          <div className={styles.expandedActions}>
+            <button
+              className={styles.bookBtn}
+              onClick={() => setIsBookingOpen(true)}
+            >
+              Book trial lesson
+            </button>
+            <button
+              className={styles.collapseBtn}
+              aria-label="Collapse"
+              onClick={() => setIsExpanded(false)}
+            >
+              <ChevronIcon className={styles.chevronUp} />
+              <ChevronIcon className={styles.chevronUp} />
+            </button>
+          </div>
         )}
       </div>
     </div>

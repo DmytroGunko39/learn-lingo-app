@@ -304,7 +304,7 @@ src/
 
 ---
 
-### PHASE 16 — Book Trial Lesson Modal
+### PHASE 16 — Book Trial Lesson Modal✅
 
 - [ ] **16.1** Create `src/components/BookingForm/BookingForm.jsx` and `BookingForm.module.css`
 - [ ] **16.2** Form fields (all required):
@@ -339,7 +339,7 @@ src/
 
 ---
 
-### PHASE 17 — Final Polish
+### PHASE 17 — Final Polish✅
 
 - [ ] **17.1** Go through all pages — check for any console errors and fix them
 - [ ] **17.2** Check all modals: ✕ button, backdrop click, and Esc key all close them
@@ -351,10 +351,13 @@ src/
 - [ ] **17.8** Remove all code comments
 - [ ] **17.9** Check HTML is semantic (use `<header>`, `<main>`, `<section>`, `<ul>`, `<li>`, etc.)
 - [ ] **17.9.1**
-      Option 1 — EmailJS ✅ easiest
-      A free service that sends emails directly from the frontend. No backend needed. Perfect for a portfolio project.
-      Option 2 — Firebase Cloud Functions
-      A small backend function that triggers when a booking is saved and sends an email automatically. More professional but more complex.
+      // ‼️‼️TODO Phase 17 — Email Notifications
+      // Booking data is already saved to Firebase (completed).
+      // Email notification to the client is NOT yet implemented.
+      // Two options for future implementation:
+      // Option 1: EmailJS — free, frontend only, no backend needed (easiest)
+      // Option 2: Firebase Cloud Functions — triggers on booking save, more professional
+      // Choose one approach and implement before final production release.
 
 ---
 

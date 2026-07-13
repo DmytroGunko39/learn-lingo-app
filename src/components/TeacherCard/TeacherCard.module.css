@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   background: #ffffff;
   border-radius: 24px;
   padding: 24px;
@@ -228,6 +229,14 @@
   color: #121417;
 }
 
+/* Expanded — actions row (book + collapse) */
+.expandedActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
 /* Expanded — book button */
 .bookBtn {
   display: block;
@@ -241,7 +250,6 @@
   font-weight: 700;
   font-size: 18px;
   cursor: pointer;
-  margin-top: 32px;
   transition: background-color 0.2s;
 }
 
@@ -271,6 +279,47 @@
 .levelActive {
   background-color: #f4c550;
   border-color: #f4c550;
+}
+
+/* Collapse button — circle matching bookBtn height */
+.collapseBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #f8f7f5;
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  color: #4b4b4b;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s,
+    background-color 0.2s;
+}
+
+.collapseBtn:hover {
+  background-color: #f2f1ee;
+  border-color: rgba(0, 0, 0, 0.26);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.chevronUp {
+  display: block;
+  transform: rotate(180deg);
+  width: 35px;
+  height: 35px;
+  stroke-width: 2;
+  margin-bottom: -23px;
+}
+
+.chevronUp:last-child {
+  margin-bottom: 0;
 }
 
 /* ── Tablet (768px – 1279px): 2-column grid, horizontal card ── */
@@ -322,10 +371,20 @@
     font-size: 15px;
   }
 
+  .expandedActions {
+    gap: 12px;
+  }
+
   .bookBtn {
-    width: 100%;
+    flex: 1;
+    width: auto;
     height: 52px;
     font-size: 16px;
+  }
+
+  .collapseBtn {
+    width: 52px;
+    height: 52px;
   }
 }
 
@@ -428,11 +487,21 @@
     font-size: 14px;
   }
 
+  .expandedActions {
+    gap: 10px;
+    margin-top: 8px;
+  }
+
   .bookBtn {
-    width: 100%;
+    flex: 1;
+    width: auto;
     height: 44px;
     font-size: 14px;
-    margin-top: 8px;
+  }
+
+  .collapseBtn {
+    width: 44px;
+    height: 44px;
   }
 
   /* ── Expanded: spans both grid columns, all content visible ── */
