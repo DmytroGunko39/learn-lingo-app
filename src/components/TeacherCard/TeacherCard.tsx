@@ -120,36 +120,36 @@ const TeacherCard = ({ teacher }: Props) => {
           </button>
         )}
 
-        {isExpanded && (
-          <>
-            <p className={styles.experience}>{experience}</p>
+        <div
+          className={`${styles.expandedSection}${isExpanded ? ` ${styles.expandedSectionOpen}` : ""}`}
+        >
+          <p className={styles.experience}>{experience}</p>
 
-            <ul className={styles.reviews}>
-              {reviews.map((review, i) => (
-                <li key={i} className={styles.review}>
-                  <div className={styles.reviewHeader}>
-                    {review.reviewer_avatar && (
-                      <img
-                        src={review.reviewer_avatar}
-                        alt={review.reviewer_name}
-                        className={styles.reviewerAvatar}
-                      />
-                    )}
-                    <div className={styles.reviewerInfo}>
-                      <span className={styles.reviewerName}>
-                        {review.reviewer_name}
-                      </span>
-                      <span className={styles.reviewerRating}>
-                        <StarIcon /> {review.reviewer_rating.toFixed(1)}
-                      </span>
-                    </div>
+          <ul className={styles.reviews}>
+            {reviews.map((review, i) => (
+              <li key={i} className={styles.review}>
+                <div className={styles.reviewHeader}>
+                  {review.reviewer_avatar && (
+                    <img
+                      src={review.reviewer_avatar}
+                      alt={review.reviewer_name}
+                      className={styles.reviewerAvatar}
+                    />
+                  )}
+                  <div className={styles.reviewerInfo}>
+                    <span className={styles.reviewerName}>
+                      {review.reviewer_name}
+                    </span>
+                    <span className={styles.reviewerRating}>
+                      <StarIcon /> {review.reviewer_rating.toFixed(1)}
+                    </span>
                   </div>
-                  <p className={styles.reviewComment}>{review.comment}</p>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
+                </div>
+                <p className={styles.reviewComment}>{review.comment}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div className={styles.levels}>
           {levels.map((level, index) => (
@@ -162,7 +162,9 @@ const TeacherCard = ({ teacher }: Props) => {
           ))}
         </div>
 
-        {isExpanded && (
+        <div
+          className={`${styles.expandedSection}${isExpanded ? ` ${styles.expandedSectionOpen}` : ""}`}
+        >
           <div className={styles.expandedActions}>
             <button
               className={styles.bookBtn}
@@ -179,7 +181,7 @@ const TeacherCard = ({ teacher }: Props) => {
               <ChevronIcon className={styles.chevronUp} />
             </button>
           </div>
-        )}
+        </div>
       </div>
     </div>
 

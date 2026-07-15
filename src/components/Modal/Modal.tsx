@@ -12,7 +12,7 @@ const Modal = ({ onClose, children }: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
 
   const handleClose = useCallback(() => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1280) {
       setIsClosing(true);
       setTimeout(() => onClose(), 300);
     } else {
