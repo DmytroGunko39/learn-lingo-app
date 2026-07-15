@@ -44,10 +44,9 @@
   }
 
   .cardGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    align-items: start;
     width: 100%;
   }
 
