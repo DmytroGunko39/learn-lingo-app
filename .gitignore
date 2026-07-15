@@ -24,3 +24,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Planning of the project
+.LearnLingo_Project_Plan.md
