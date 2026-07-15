@@ -233,7 +233,7 @@
 .expandedActions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
   margin-top: 32px;
 }
 
@@ -390,15 +390,10 @@
     font-size: 15px;
   }
 
-  .expandedActions {
-    gap: 12px;
-  }
-
   .bookBtn {
-    flex: 1;
-    width: auto;
+    width: 232px;
     height: 52px;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .collapseBtn {
@@ -507,15 +502,13 @@
   }
 
   .expandedActions {
-    gap: 10px;
     margin-top: 8px;
   }
 
   .bookBtn {
-    flex: 1;
-    width: auto;
+    width: 232px;
     height: 44px;
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .collapseBtn {
