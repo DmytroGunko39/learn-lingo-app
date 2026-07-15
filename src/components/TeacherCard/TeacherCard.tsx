@@ -31,6 +31,14 @@ const TeacherCard = ({ teacher }: Props) => {
     toggleFavorite(teacher.id);
   };
 
+  const handleBookClick = () => {
+    if (!currentUser) {
+      toast.error("Please log in to book a trial lesson");
+      return;
+    }
+    setIsBookingOpen(true);
+  };
+
   const {
     name,
     surname,
@@ -168,10 +176,7 @@ const TeacherCard = ({ teacher }: Props) => {
           className={`${styles.expandedSection}${isExpanded ? ` ${styles.expandedSectionOpen}` : ""}`}
         >
           <div className={styles.expandedActions}>
-            <button
-              className={styles.bookBtn}
-              onClick={() => setIsBookingOpen(true)}
-            >
+            <button className={styles.bookBtn} onClick={handleBookClick}>
               Book trial lesson
             </button>
             <button

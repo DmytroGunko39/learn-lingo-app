@@ -361,7 +361,7 @@ src/
 
 ---
 
-### PHASE 18 — README & Deployment
+### PHASE 18 — README & Deployment✅
 
 - [ ] **18.1** Create `README.md` in root with:
   - Project description
@@ -370,8 +370,6 @@ src/
   - Link to live demo
   - How to run locally (`npm install` + `npm run dev`)
 - [ ] **18.2** Push project to GitHub repository
-- [ ] **18.3** Go to [netlify.com](https://netlify.com) → "Add new site" → "Import from Git"
-- [ ] **18.4** Set build command: `npm run build`, publish directory: `dist`
 - [ ] **18.5** Add all `.env` variables in Netlify → Site settings → Environment variables
 - [ ] **18.6** Deploy and test the live URL
 - [ ] **18.7** Add live URL to `README.md` and push
