@@ -123,32 +123,34 @@ const TeacherCard = ({ teacher }: Props) => {
         <div
           className={`${styles.expandedSection}${isExpanded ? ` ${styles.expandedSectionOpen}` : ""}`}
         >
-          <p className={styles.experience}>{experience}</p>
+          <div>
+            <p className={styles.experience}>{experience}</p>
 
-          <ul className={styles.reviews}>
-            {reviews.map((review, i) => (
-              <li key={i} className={styles.review}>
-                <div className={styles.reviewHeader}>
-                  {review.reviewer_avatar && (
-                    <img
-                      src={review.reviewer_avatar}
-                      alt={review.reviewer_name}
-                      className={styles.reviewerAvatar}
-                    />
-                  )}
-                  <div className={styles.reviewerInfo}>
-                    <span className={styles.reviewerName}>
-                      {review.reviewer_name}
-                    </span>
-                    <span className={styles.reviewerRating}>
-                      <StarIcon /> {review.reviewer_rating.toFixed(1)}
-                    </span>
+            <ul className={styles.reviews}>
+              {reviews.map((review, i) => (
+                <li key={i} className={styles.review}>
+                  <div className={styles.reviewHeader}>
+                    {review.reviewer_avatar && (
+                      <img
+                        src={review.reviewer_avatar}
+                        alt={review.reviewer_name}
+                        className={styles.reviewerAvatar}
+                      />
+                    )}
+                    <div className={styles.reviewerInfo}>
+                      <span className={styles.reviewerName}>
+                        {review.reviewer_name}
+                      </span>
+                      <span className={styles.reviewerRating}>
+                        <StarIcon /> {review.reviewer_rating.toFixed(1)}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <p className={styles.reviewComment}>{review.comment}</p>
-              </li>
-            ))}
-          </ul>
+                  <p className={styles.reviewComment}>{review.comment}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className={styles.levels}>
