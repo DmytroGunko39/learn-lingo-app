@@ -86,7 +86,6 @@ const Header = () => {
             )}
           </div>
 
-          {/* Hamburger button — mobile only */}
           <button
             className={styles.hamburgerBtn}
             onClick={() => setMenuOpen((prev) => !prev)}
@@ -124,7 +123,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile dropdown menu */}
         <div
           className={`${styles.mobileMenu}${menuOpen ? ` ${styles.mobileMenuOpen}` : ""}`}
         >

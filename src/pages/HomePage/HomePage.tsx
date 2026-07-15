@@ -1,11 +1,9 @@
-// 8.1 — HomePage component
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StatsBorderIcon from "../../assets/icons/StatsBorderIcon";
 import Spinner from "../../components/Spinner/Spinner";
 import styles from "./HomePage.module.css";
 
-// 8.4 — Statistics data
 const stats = [
   { value: "32,000 +", label: "Experienced tutors" },
   { value: "300,000 +", label: "5-star tutor reviews" },
@@ -14,7 +12,6 @@ const stats = [
 ];
 
 const HomePage = () => {
-  // 8.3 — useNavigate to redirect to /teachers on button click
   const navigate = useNavigate();
   const [isHeroImageLoading, setIsHeroImageLoading] = useState(true);
 
@@ -23,10 +20,8 @@ const HomePage = () => {
       {isHeroImageLoading && <Spinner />}
 
       <div className={styles.container}>
-        {/* 8.2 — Hero section */}
         <section className={styles.hero}>
           <div className={styles.heroContent}>
-            {/* Headline with highlighted italic "language" */}
             <h1 className={styles.title}>
               Unlock your potential with the best{" "}
               <span className={styles.highlight}>language</span> tutors
@@ -38,7 +33,6 @@ const HomePage = () => {
               connecting with highly qualified and experienced tutors.
             </p>
 
-            {/* 8.3 — Get started button navigates to /teachers */}
             <button
               className={styles.getStartedBtn}
               onClick={() => navigate("/teachers")}
@@ -47,7 +41,6 @@ const HomePage = () => {
             </button>
           </div>
 
-          {/* Decorative image on the right */}
           <div className={styles.heroImageWrapper}>
             <img
               src="/hero.png"
@@ -58,7 +51,6 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* 8.4 — Statistics section — SVG rect used for custom dash length/gap control */}
         <section className={styles.stats}>
           <StatsBorderIcon className={styles.statsBorder} />
           {stats.map(({ value, label }) => (

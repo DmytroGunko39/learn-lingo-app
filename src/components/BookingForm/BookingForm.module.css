@@ -26,6 +26,14 @@
   margin-bottom: 4px;
 }
 
+/* Radio fieldset reset */
+.radioFieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
 /* Teacher row */
 .teacherRow {
   display: flex;

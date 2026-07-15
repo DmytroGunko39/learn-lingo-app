@@ -73,7 +73,6 @@ const BookingForm = ({
         your learning goals, and tailor the lesson to your specific needs.
       </p>
 
-      {/* Teacher row */}
       {(teacherAvatar || teacherName) && (
         <div className={styles.teacherRow}>
           {teacherAvatar && (
@@ -90,28 +89,28 @@ const BookingForm = ({
         </div>
       )}
 
-      {/* Reason radio group */}
-      <p className={styles.reasonHeading}>
-        What is your main reason for learning a new language?
-      </p>
-      <div className={styles.radioGroup}>
-        {REASONS.map(({ value, label }) => (
-          <label key={value} className={styles.radioLabel}>
-            <input
-              {...register("reason")}
-              type="radio"
-              value={value}
-              className={styles.radioInput}
-            />
-            {label}
-          </label>
-        ))}
-      </div>
-      {errors.reason && (
-        <span className={styles.error}>{errors.reason.message}</span>
-      )}
+      <fieldset className={styles.radioFieldset}>
+        <legend className={styles.reasonHeading}>
+          What is your main reason for learning a new language?
+        </legend>
+        <div className={styles.radioGroup}>
+          {REASONS.map(({ value, label }) => (
+            <label key={value} className={styles.radioLabel}>
+              <input
+                {...register("reason")}
+                type="radio"
+                value={value}
+                className={styles.radioInput}
+              />
+              {label}
+            </label>
+          ))}
+        </div>
+        {errors.reason && (
+          <span className={styles.error}>{errors.reason.message}</span>
+        )}
+      </fieldset>
 
-      {/* Text fields */}
       <div className={styles.field}>
         <input
           {...register("fullName")}
