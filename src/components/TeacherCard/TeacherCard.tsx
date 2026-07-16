@@ -25,7 +25,17 @@ const TeacherCard = ({ teacher }: Props) => {
 
   const handleHeartClick = () => {
     if (!currentUser) {
-      toast.error("Please log in to add to favorites");
+      toast("Please log in to add to favorites", {
+        icon: "🔒",
+        style: {
+          background: "#FFF0F0",
+          color: "#C0392B",
+          border: "1px solid #F5C6C6",
+          fontWeight: "500",
+          borderRadius: "12px",
+          padding: "12px 20px",
+        },
+      });
       return;
     }
     toggleFavorite(teacher.id);
@@ -33,7 +43,17 @@ const TeacherCard = ({ teacher }: Props) => {
 
   const handleBookClick = () => {
     if (!currentUser) {
-      toast.error("Please log in to book a trial lesson");
+      toast.error("Please log in to book a trial lesson", {
+        icon: "🔒",
+        style: {
+          background: "#FFF0F0",
+          color: "#C0392B",
+          border: "1px solid #F5C6C6",
+          fontWeight: "500",
+          borderRadius: "12px",
+          padding: "12px 20px",
+        },
+      });
       return;
     }
     setIsBookingOpen(true);
@@ -58,150 +78,154 @@ const TeacherCard = ({ teacher }: Props) => {
 
   return (
     <>
-    <div className={`${styles.card}${isExpanded ? ` ${styles.cardExpanded}` : ""}`}>
-      <div className={styles.avatarWrapper}>
-        <img
-          src={avatar_url}
-          alt={`${name} ${surname}`}
-          className={styles.avatar}
-        />
-        <OnlineDotIcon className={styles.onlineDot} />
-      </div>
-
-      <div className={styles.content}>
-        <div className={styles.topBar}>
-          <span className={styles.languagesLabel}>Languages</span>
-
-          <div className={styles.statsRow}>
-            <span className={styles.statItem}>
-              <BookIcon /> Lessons online
-            </span>
-            <span className={styles.divider} />
-            <span className={styles.statItem}>
-              Lessons done: {lessons_done}
-            </span>
-            <span className={styles.divider} />
-            <span className={styles.statItem}>
-              <StarIcon /> Rating: {rating}
-            </span>
-            <span className={styles.divider} />
-            <span className={styles.statItem}>
-              Price / 1 hour:{" "}
-              <span className={styles.price}>{price_per_hour}$</span>
-            </span>
-          </div>
-
-          <button
-            className={styles.heartBtn}
-            aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
-            onClick={handleHeartClick}
-          >
-            <HeartIcon filled={isFavorited} />
-          </button>
+      <div
+        className={`${styles.card}${isExpanded ? ` ${styles.cardExpanded}` : ""}`}
+      >
+        <div className={styles.avatarWrapper}>
+          <img
+            src={avatar_url}
+            alt={`${name} ${surname}`}
+            className={styles.avatar}
+          />
+          <OnlineDotIcon className={styles.onlineDot} />
         </div>
 
-        <h2 className={styles.name}>
-          {name} {surname}
-        </h2>
+        <div className={styles.content}>
+          <div className={styles.topBar}>
+            <span className={styles.languagesLabel}>Languages</span>
 
-        <div className={styles.infoBlock}>
-          <p className={styles.infoRow}>
-            <span className={styles.infoLabel}>Speaks: </span>
-            <span className={styles.speaksList}>{languages.join(", ")}</span>
-          </p>
-          <p className={styles.infoRow}>
-            <span className={styles.infoLabel}>Lesson Info: </span>
-            <span>{lesson_info}</span>
-          </p>
-          <p className={styles.infoRow}>
-            <span className={styles.infoLabel}>Conditions: </span>
-            <span>{conditions.join(" ")}</span>
-          </p>
-        </div>
+            <div className={styles.statsRow}>
+              <span className={styles.statItem}>
+                <BookIcon /> Lessons online
+              </span>
+              <span className={styles.divider} />
+              <span className={styles.statItem}>
+                Lessons done: {lessons_done}
+              </span>
+              <span className={styles.divider} />
+              <span className={styles.statItem}>
+                <StarIcon /> Rating: {rating}
+              </span>
+              <span className={styles.divider} />
+              <span className={styles.statItem}>
+                Price / 1 hour:{" "}
+                <span className={styles.price}>{price_per_hour}$</span>
+              </span>
+            </div>
 
-        {!isExpanded && (
-          <button
-            className={styles.readMoreBtn}
-            onClick={() => setIsExpanded(true)}
-          >
-            Read more
-          </button>
-        )}
-
-        <div
-          className={`${styles.expandedSection}${isExpanded ? ` ${styles.expandedSectionOpen}` : ""}`}
-        >
-          <div>
-            <p className={styles.experience}>{experience}</p>
-
-            <ul className={styles.reviews}>
-              {reviews.map((review, i) => (
-                <li key={i} className={styles.review}>
-                  <div className={styles.reviewHeader}>
-                    {review.reviewer_avatar && (
-                      <img
-                        src={review.reviewer_avatar}
-                        alt={review.reviewer_name}
-                        className={styles.reviewerAvatar}
-                      />
-                    )}
-                    <div className={styles.reviewerInfo}>
-                      <span className={styles.reviewerName}>
-                        {review.reviewer_name}
-                      </span>
-                      <span className={styles.reviewerRating}>
-                        <StarIcon /> {review.reviewer_rating.toFixed(1)}
-                      </span>
-                    </div>
-                  </div>
-                  <p className={styles.reviewComment}>{review.comment}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className={styles.levels}>
-          {levels.map((level, index) => (
-            <span
-              key={level}
-              className={`${styles.levelTag}${index === 0 ? ` ${styles.levelActive}` : ""}`}
-            >
-              #{level}
-            </span>
-          ))}
-        </div>
-
-        <div
-          className={`${styles.expandedSection}${isExpanded ? ` ${styles.expandedSectionOpen}` : ""}`}
-        >
-          <div className={styles.expandedActions}>
-            <button className={styles.bookBtn} onClick={handleBookClick}>
-              Book trial lesson
-            </button>
             <button
-              className={styles.collapseBtn}
-              aria-label="Collapse"
-              onClick={() => setIsExpanded(false)}
+              className={styles.heartBtn}
+              aria-label={
+                isFavorited ? "Remove from favorites" : "Add to favorites"
+              }
+              onClick={handleHeartClick}
             >
-              <ChevronIcon className={styles.chevronUp} />
-              <ChevronIcon className={styles.chevronUp} />
+              <HeartIcon filled={isFavorited} />
             </button>
+          </div>
+
+          <h2 className={styles.name}>
+            {name} {surname}
+          </h2>
+
+          <div className={styles.infoBlock}>
+            <p className={styles.infoRow}>
+              <span className={styles.infoLabel}>Speaks: </span>
+              <span className={styles.speaksList}>{languages.join(", ")}</span>
+            </p>
+            <p className={styles.infoRow}>
+              <span className={styles.infoLabel}>Lesson Info: </span>
+              <span>{lesson_info}</span>
+            </p>
+            <p className={styles.infoRow}>
+              <span className={styles.infoLabel}>Conditions: </span>
+              <span>{conditions.join(" ")}</span>
+            </p>
+          </div>
+
+          {!isExpanded && (
+            <button
+              className={styles.readMoreBtn}
+              onClick={() => setIsExpanded(true)}
+            >
+              Read more
+            </button>
+          )}
+
+          <div
+            className={`${styles.expandedSection}${isExpanded ? ` ${styles.expandedSectionOpen}` : ""}`}
+          >
+            <div>
+              <p className={styles.experience}>{experience}</p>
+
+              <ul className={styles.reviews}>
+                {reviews.map((review, i) => (
+                  <li key={i} className={styles.review}>
+                    <div className={styles.reviewHeader}>
+                      {review.reviewer_avatar && (
+                        <img
+                          src={review.reviewer_avatar}
+                          alt={review.reviewer_name}
+                          className={styles.reviewerAvatar}
+                        />
+                      )}
+                      <div className={styles.reviewerInfo}>
+                        <span className={styles.reviewerName}>
+                          {review.reviewer_name}
+                        </span>
+                        <span className={styles.reviewerRating}>
+                          <StarIcon /> {review.reviewer_rating.toFixed(1)}
+                        </span>
+                      </div>
+                    </div>
+                    <p className={styles.reviewComment}>{review.comment}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.levels}>
+            {levels.map((level, index) => (
+              <span
+                key={level}
+                className={`${styles.levelTag}${index === 0 ? ` ${styles.levelActive}` : ""}`}
+              >
+                #{level}
+              </span>
+            ))}
+          </div>
+
+          <div
+            className={`${styles.expandedSection}${isExpanded ? ` ${styles.expandedSectionOpen}` : ""}`}
+          >
+            <div className={styles.expandedActions}>
+              <button className={styles.bookBtn} onClick={handleBookClick}>
+                Book trial lesson
+              </button>
+              <button
+                className={styles.collapseBtn}
+                aria-label="Collapse"
+                onClick={() => setIsExpanded(false)}
+              >
+                <ChevronIcon className={styles.chevronUp} />
+                <ChevronIcon className={styles.chevronUp} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    {isBookingOpen && (
-      <Modal onClose={closeBooking}>
-        <BookingForm
-          onClose={closeBooking}
-          teacherId={teacher.id}
-          teacherName={`${name} ${surname}`}
-          teacherAvatar={avatar_url}
-        />
-      </Modal>
-    )}
+      {isBookingOpen && (
+        <Modal onClose={closeBooking}>
+          <BookingForm
+            onClose={closeBooking}
+            teacherId={teacher.id}
+            teacherName={`${name} ${surname}`}
+            teacherAvatar={avatar_url}
+          />
+        </Modal>
+      )}
     </>
   );
 };
